@@ -24,6 +24,10 @@ jobs:
         run: |
           dbt --version
           printf '%s\n' 'retirement-conductor-validator-versions: {"dbt-core":"1.x","dbt-duckdb":"1.10.1"}' >> "$GITHUB_STEP_SUMMARY"
+      - name: Create disposable DuckDB directory
+        run: |
+          sudo mkdir -p /workspace/.runtime
+          sudo chown "$USER" /workspace/.runtime
       - name: Parse
         run: dbt parse --no-partial-parse
       - name: Seed
