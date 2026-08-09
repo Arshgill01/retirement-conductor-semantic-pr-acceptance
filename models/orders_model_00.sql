@@ -10,6 +10,6 @@
 
 select
     order_id,
-    legacy_status as normalized_status,
+    order_status as normalized_status,
     order_amount
 from {{ ref('orders') }}
